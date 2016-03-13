@@ -1,2 +1,2 @@
 # dotfiles
-My dotfiles, incluede vimrc, tmux.conf and so on
+My dotfiles, include vimrc, tmux.conf and so on
