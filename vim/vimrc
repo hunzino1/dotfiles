@@ -186,8 +186,9 @@ map T <Plug>(easymotion-sn)
 " colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
+  set guifont=Monaco:h12
   set background=dark
-  colorscheme solarized
+  colorscheme vividchalk
   highlight SignifySignAdd    gui=bold guibg=NONE guifg=#009900
   highlight SignifySignDelete gui=bold guibg=NONE guifg=#ff2222
   highlight SignifySignChange gui=bold guibg=NONE guifg=#bbbb00
