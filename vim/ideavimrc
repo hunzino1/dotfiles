@@ -1,0 +1,9 @@
+set hlsearch
+set visualbell
+
+let mapleader = " "
+nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>q :q<CR>
+noremap <silent> H <C-W>h
+noremap <silent> L <C-W>l
+nnoremap <silent> <leader>d :nohlsearch<CR>

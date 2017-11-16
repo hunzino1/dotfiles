@@ -89,10 +89,10 @@ autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
 nnoremap j gj
 nnoremap k gk
 
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 runtime! macros/matchit.vim
 
@@ -233,8 +233,6 @@ nnoremap <silent> <leader>m :e ~/workspace/rails_guides/source/<CR>
 noremap <silent> <leader>df :Gdiff<CR>
 noremap <silent> <leader>gb :Gblame<CR>
 noremap <silent> <leader>gs :Gstatus<CR>
-
-"let Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 
 " ========= Restore cursor to file position in previous editing session =========
 set viminfo='10,\"100,:20,%,n~/.viminfo'

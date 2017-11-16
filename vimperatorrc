@@ -1,0 +1,16 @@
+"3.16.0 (created: 2017/02/01 00:55:15)
+
+source! /Users/dengqinghua/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+
+nmap h gT
+nmap l gt
+
+nnoremap j 10j
+nnoremap k 10k
+
+nmap a :back<CR>
+nmap s :forward<CR>
+
+set hintchars=qwertyuiopasdfghjklzxcvbnm
