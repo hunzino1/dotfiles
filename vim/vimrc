@@ -27,7 +27,6 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
 Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'mhinz/vim-signify'
 Plugin 'honza/vim-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/undotree'
@@ -37,8 +36,6 @@ Plugin 'tomasr/molokai'
 Plugin 'tpope/vim-ragtag'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'rking/ag.vim'
-" Plugin 'skalnik/vim-vroom'
 Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'altercation/vim-colors-solarized'
@@ -53,6 +50,7 @@ Plugin 'morhetz/gruvbox'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
