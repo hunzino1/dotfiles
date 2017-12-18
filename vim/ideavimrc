@@ -8,7 +8,7 @@ nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>v v$h
 
 " 去掉highlight显示
-nnoremap <silent> <leader>d :nohlsearch<CR>
+" nnoremap <silent> <leader>d :nohlsearch<CR>
 
 " ============ 窗口相关 ============
 " 设置窗口跳转
@@ -16,7 +16,6 @@ noremap <silent> H <C-W>h
 noremap <silent> L <C-W>l
 noremap <silent> <C-H> <C-W>h
 noremap <silent> <C-L> <C-W>l
-
 
 " ideavim支持调用idea intellj原生的action.
 " 在这里 https://anotepad.com/notes/7g8gn4 列出了可以使用的actionlist
@@ -41,6 +40,7 @@ nnoremap <leader>] :action GotoDeclaration<CR>
 nnoremap <leader>k :action GotoClass<CR>
 " 查找类对应的test
 nnoremap <leader>t :action GotoTest<CR>
+nnoremap <leader>s :action SearchEverywhere<CR>
 " ============ 查找相关 ============
 
 " 查看当前文件的所有方法, class等结构信息
@@ -53,11 +53,9 @@ nnoremap - :action Back<CR>
 nnoremap = :action Forward<CR>
 " ============ 跳转相关 ============
 
-" ============ 编译, 运行, debug相关 ============
-" p for pry
-nnoremap <leader>p :action Debug<CR>
+" ============ 编译, 运行相关 ============
 nnoremap <leader>r :action RunClass<CR>
-nnoremap <leader>s :action Run<CR>
+"nnoremap <leader>s :action Run<CR>
 " ============ 编译, 运行, debug相关 ============
 
 " ============ 拷贝路径 ============
@@ -72,3 +70,19 @@ nnoremap <leader>m :action Move<CR>
 nnoremap <leader>n :action NewElement<CR>
 " 查看javadoc
 nnoremap <leader>h :action QuickJavaDoc<CR>
+
+
+" ============ 调试相关 ============
+" 添加断点
+nnoremap ;b :action ToggleLineBreakpoint<CR>
+" 执行语句
+nnoremap ;e :action EvaluateExpression<CR>
+" 开始debug
+nnoremap ;d :action Debug<CR>
+" 使得程序继续执行
+nnoremap ;r :action Resume<CR>
+" step
+nnoremap ;s :action StepInto<CR>
+" next
+nnoremap ;n :action StepOver<CR>
+" ============ 调试相关 ============
