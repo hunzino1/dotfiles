@@ -50,7 +50,7 @@ Plugin 'morhetz/gruvbox'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -195,9 +195,9 @@ map T <Plug>(easymotion-sn)
 " colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=Menlo\ Regular:h14
+  set guifont=Menlo\ Regular:h13
   "colorscheme solarized
-  set background=light
+  set background=dark
   colorscheme gruvbox
 
   let g:gruvbox_contrast_light = 'soft'
