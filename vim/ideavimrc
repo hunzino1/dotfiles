@@ -8,7 +8,7 @@ nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>v v$h
 
 " 去掉highlight显示
-" nnoremap <silent> <leader>d :nohlsearch<CR>
+nnoremap <silent> <leader>d :nohlsearch<CR>
 
 " ============ 窗口相关 ============
 " 设置窗口跳转
@@ -65,12 +65,13 @@ nnoremap <leader>; :action CopyReference<CR>
 
 nnoremap <leader>g :action Generate<CR>
 " 移动并修改当前文件
-nnoremap <leader>m :action Move<CR>
+nnoremap <leader>m :action RenameFile<CR>
 " 创建新的元素
 nnoremap <leader>n :action NewElement<CR>
 " 查看javadoc
 nnoremap <leader>h :action QuickJavaDoc<CR>
-
+" 获取当前方法的返回类型
+nnoremap <leader>i :action ExpressionTypeInfo<CR>
 
 " ============ 调试相关 ============
 " 添加断点
@@ -86,3 +87,7 @@ nnoremap ;s :action StepInto<CR>
 " next
 nnoremap ;n :action StepOver<CR>
 " ============ 调试相关 ============
+
+" 关闭项目
+nnoremap ,q :action CloseProject<CR>
+

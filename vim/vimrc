@@ -196,9 +196,8 @@ map T <Plug>(easymotion-sn)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
   set guifont=Menlo\ Regular:h13
-  "colorscheme solarized
+  colorscheme solarized
   set background=dark
-  colorscheme gruvbox
 
   let g:gruvbox_contrast_light = 'soft'
 else
@@ -236,6 +235,8 @@ nnoremap <silent> <leader>x :NERDTreeFind<CR>
 
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :q<CR>
+
+nnoremap <silent> <leader>c <C-W><C-O>
 
 noremap <silent> K k
 noremap <silent> U u
