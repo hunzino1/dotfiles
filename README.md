@@ -13,16 +13,16 @@ vim
 ---
 使用邓擎铧的配置vim配置, 需要执行下面的命令
 
-### 拷贝vimrc文件
-```
-git clone https://github.com/dengqinghua/dotfiles.git ~/Downloads/dotfiles
-cp ~/Downloads/dotfiles/vim/vimrc ~/.vimrc
-```
-
 ### 拷贝vim插件安装工具
 
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+### 拷贝vimrc文件
+```
+git clone https://github.com/dengqinghua/dotfiles.git ~/Downloads/dotfiles
+cp ~/Downloads/dotfiles/vim/vimrc ~/.vimrc
 ```
 
 ### 安装vimrc中的插件
