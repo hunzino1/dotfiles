@@ -22,7 +22,8 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-syntastic/syntastic'
+"Plugin 'vim-syntastic/syntastic'
+Plugin 'neomake/neomake'
 
 Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
@@ -195,11 +196,10 @@ map T <Plug>(easymotion-sn)
 " colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  set guifont=Menlo\ Regular:h13
+  "set guifont=Menlo\ Regular:h13
+  set guifont=Monaco:h13
   colorscheme solarized
   set background=dark
-
-  let g:gruvbox_contrast_light = 'soft'
 else
   highlight SignifySignAdd    cterm=bold ctermbg=NONE ctermfg=119
   highlight SignifySignDelete cterm=bold ctermbg=NONE ctermfg=167
