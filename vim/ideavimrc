@@ -90,4 +90,3 @@ nnoremap ;n :action StepOver<CR>
 
 " 关闭项目
 nnoremap ,q :action CloseProject<CR>
-

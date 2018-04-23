@@ -8,6 +8,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimfiler.vim'
 
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
@@ -22,13 +23,10 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'neomake/neomake'
 
 Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'honza/vim-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/undotree'
 Plugin 'jiangmiao/auto-pairs'
@@ -48,10 +46,15 @@ Plugin 'posva/vim-vue'
 Plugin 'moll/vim-node'
 
 Plugin 'morhetz/gruvbox'
-
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
 "Plugin 'fatih/vim-go'
+
+"Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'neomake/neomake'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 call vundle#end()
 
@@ -60,7 +63,7 @@ call vundle#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 filetype plugin indent on
-compiler ruby
+"compiler ruby
 
 set autoindent
 set hlsearch
@@ -74,7 +77,7 @@ set diffopt+=vertical
 set tabstop=2 shiftwidth=2 softtabstop=2
 set list listchars=tab:»▸,trail:·,nbsp:·
 set laststatus=2
-"set wildmenu
+set wildmenu
 set wildmode=list:longest,list:full
 set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -82,6 +85,7 @@ set termencoding=utf-8
 set tags=./tags;$HOME
 set nobackup
 set noswapfile
+set backspace=indent,eol,start
 
 "if exists('+colorcolumn')
 "  set colorcolumn=80
@@ -149,7 +153,29 @@ nnoremap <silent> <leader>o :ZoomToggle<CR>
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga      <Plug>(EasyAlign)
 
-autocmd FileType vue syntax sync fromstart
+"============= neo =============
+call neomake#configure#automake('w')
+
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" )
+endfunction
+"============= neo =============
+
+"autocmd FileType vue syntax sync fromstart
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType java call s:java_settings()
+
+function! s:java_settings()
+  setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  setlocal list listchars=tab:»▸,trail:·,nbsp:·
+
+call neomake#configure#automake('w')
+" When writing a buffer, and on normal mode changes (after 750ms).
+call neomake#configure#automake('nw', 750)
+"   " When reading a buffer (after 1s), and when writing.
+call neomake#configure#automake('rw', 1000)
+endfunction
 
 let g:vimshell_editor_command='/usr/local/bin/vim'
 
@@ -168,7 +194,7 @@ autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
   set number
   imap <buffer> <C-j> <Plug>(unite_select_next_line)
-  imap <buffer> <C-k> <Plug>(unite_select_previous_line)
+  " imap <buffer> <C-k> <Plug>(unite_select_previous_line)
 endfunction
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
@@ -178,10 +204,6 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_rec_async_command =
         \ 'ag --follow --nocolor --nogroup --hidden -g ""'
-endif
-
-if has('conceal')
-  set conceallevel=2 concealcursor=i
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -196,7 +218,6 @@ map T <Plug>(easymotion-sn)
 " colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('gui_running')
-  "set guifont=Menlo\ Regular:h13
   set guifont=Monaco:h13
   colorscheme solarized
   set background=dark
@@ -249,6 +270,8 @@ noremap <silent> <leader>df :Gdiff<CR>
 noremap <silent> <leader>gb :Gblame<CR>
 noremap <silent> <leader>gs :Gstatus<CR>
 
+nnoremap <leader>p a<SPACE><C-R>=strftime("%Y-%m-%d")<CR><Esc>
+
 " ========= Restore cursor to file position in previous editing session =========
 set viminfo='10,\"100,:20,%,n~/.viminfo'
 function! ResCur()
@@ -265,3 +288,58 @@ augroup END
 " ========= Restore cursor to file position in previous editing session =========
 "
 set noerrorbells visualbell t_vb=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 1
+inoremap <C-l> <C-x><C-o>
+autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"   let g:neocomplete#force_omni_input_patterns = {}
+" endif
+" let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" neosnippet
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Disable the default snippets: https://github.com/spf13/spf13-vim/issues/539
+let g:neosnippet#disable_runtime_snippets = { "_": 1, }
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets'
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+imap <expr><C-j> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<C-j>"
+smap <expr><C-j> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<C-j>"
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" https://stackoverflow.com/questions/17908593/how-to-find-the-unicode-of-the-subscript-alphabet/28373132#28373132
+execute "digraphs iS " . 0x2071
+execute "digraphs nS " . 0x207f
+
+nnoremap <leader>rs :%s+(images+(https://cdn.rawgit.com/dengqinghua/roses/master/assets/images+g<CR>
+nnoremap <leader>hh :%! xxd
+nnoremap <leader>hr :%! xxd -r
