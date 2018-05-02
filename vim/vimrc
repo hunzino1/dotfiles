@@ -52,9 +52,6 @@ Plugin 'jelera/vim-javascript-syntax'
 
 "Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'neomake/neomake'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
 
 call vundle#end()
 
@@ -164,18 +161,18 @@ endfunction
 
 "autocmd FileType vue syntax sync fromstart
 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType java call s:java_settings()
+"autocmd FileType java call s:java_settings()
 
-function! s:java_settings()
-  setlocal tabstop=4 shiftwidth=4 softtabstop=4
-  setlocal list listchars=tab:»▸,trail:·,nbsp:·
-
-call neomake#configure#automake('w')
-" When writing a buffer, and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
-"   " When reading a buffer (after 1s), and when writing.
-call neomake#configure#automake('rw', 1000)
-endfunction
+"function! s:java_settings()
+"  setlocal tabstop=4 shiftwidth=4 softtabstop=4
+"  setlocal list listchars=tab:»▸,trail:·,nbsp:·
+"
+"call neomake#configure#automake('w')
+"" When writing a buffer, and on normal mode changes (after 750ms).
+"call neomake#configure#automake('nw', 750)
+""   " When reading a buffer (after 1s), and when writing.
+"call neomake#configure#automake('rw', 1000)
+"endfunction
 
 let g:vimshell_editor_command='/usr/local/bin/vim'
 
@@ -289,23 +286,6 @@ augroup END
 "
 set noerrorbells visualbell t_vb=
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neocomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 1
-inoremap <C-l> <C-x><C-o>
-autocmd FileType ruby       setlocal omnifunc=rubycomplete#Complete
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
-" if !exists('g:neocomplete#force_omni_input_patterns')
-"   let g:neocomplete#force_omni_input_patterns = {}
-" endif
-" let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
 function! Multiple_cursors_before()
   if exists(':NeoCompleteLock')==2
     exe 'NeoCompleteLock'
@@ -317,29 +297,10 @@ function! Multiple_cursors_after()
   endif
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" neosnippet
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable the default snippets: https://github.com/spf13/spf13-vim/issues/539
-let g:neosnippet#disable_runtime_snippets = { "_": 1, }
-let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/neosnippets'
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-imap <expr><C-j> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<C-j>"
-smap <expr><C-j> neosnippet#expandable_or_jumpable() ?
-      \ "\<Plug>(neosnippet_expand_or_jump)"
-      \: "\<C-j>"
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 " https://stackoverflow.com/questions/17908593/how-to-find-the-unicode-of-the-subscript-alphabet/28373132#28373132
 execute "digraphs iS " . 0x2071
 execute "digraphs nS " . 0x207f
 
-nnoremap <leader>rs :%s+(images+(https://cdn.rawgit.com/dengqinghua/roses/master/assets/images+g<CR>
-nnoremap <leader>hh :%! xxd
-nnoremap <leader>hr :%! xxd -r
+nnoremap <leader>rs :%s+(images+(https://raw.githubusercontent.com/dengqinghua/roses/master/assets/images+g<CR>
+nnoremap <leader>hh :%! xxd<CR>
+nnoremap <leader>hr :%! xxd -r<CR>
