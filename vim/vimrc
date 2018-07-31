@@ -5,6 +5,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'neomake/neomake'
+
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -50,8 +52,6 @@ Plugin 'moll/vim-node'
 Plugin 'morhetz/gruvbox'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-
-Plugin 'neomake/neomake'
 
 Plugin 'fatih/vim-go'
 " 用于调试go
