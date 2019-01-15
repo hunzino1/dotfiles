@@ -5,8 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'neomake/neomake'
-
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -25,6 +23,7 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'vim-scripts/tComment'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/c.vim'
 
 Plugin 'junegunn/vim-easy-align'
 Plugin 'majutsushi/tagbar'
@@ -52,10 +51,11 @@ Plugin 'moll/vim-node'
 Plugin 'morhetz/gruvbox'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jelera/vim-javascript-syntax'
-
+Plugin 'rust-lang/rust.vim'
 Plugin 'fatih/vim-go'
 " 用于调试go
 Plugin 'sebdah/vim-delve'
+Plugin 'neomake/neomake'
 
 call vundle#end()
 
@@ -96,6 +96,7 @@ set backspace=indent,eol,start
 "endif
 
 "autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
+autocmd BufNewFile,BufRead *.conf set filetype=json
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " basic key mappings
@@ -334,3 +335,7 @@ com! FormatJSON %!json
 noremap <silent> <leader>fj :FormatJSON<CR>
 
 let g:go_version_warning = 0
+
+abbr cmd ⌘
+abbr opt ⌥
+abbr ctl ⌃
