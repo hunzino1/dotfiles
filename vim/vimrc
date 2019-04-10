@@ -78,6 +78,7 @@ set diffopt+=vertical
 set tabstop=2 shiftwidth=2 softtabstop=2
 "set list listchars=tab:»▸,trail:·,nbsp:·
 set list listchars=tab:→\ ,trail:·,nbsp:·
+"set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~
 set laststatus=2
 set wildmenu
 set wildmode=list:longest,list:full
