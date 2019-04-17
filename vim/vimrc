@@ -220,7 +220,7 @@ highlight clear SignColumn
 " 建立 Ruby 的 tags, 建议使用 ripper_tags; 需要先安装 ripper-tags
 " gem install ripper-tags
 " 见 https://stackoverflow.com/a/17786089 和 https://vi.stackexchange.com/a/3062
-autocmd BufWritePost *.rb silent !ripper-tags %
+autocmd BufWritePost *.rb silent! ![ -f "./tags" ] && (cat ./tags | (cat && ripper-tags % -f -) | grep -v '^\!_' | sort | uniq -u  > tags~ && mv tags~ tags)
 
 map <Leader>rt :!ctags -R app/**/*.rb lib/**/*.rb config/**/*.rb `bundle show --paths` --exclude={.css,.log,.js}<CR><CR>
 
