@@ -3,6 +3,11 @@ set visualbell
 
 let mapleader = " "
 
+" 共享系统粘贴板
+set clipboard+=unnamed
+" 搜索时智能匹配大小写
+set ignorecase smartcase
+
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :q<CR>
 nnoremap <silent> <leader>v v$h
@@ -23,11 +28,9 @@ noremap <silent> <C-L> <C-W>l
 " 下面的所有的配置都依赖于idea本身的actionlist. 通过原生的配置, 可以使得
 " 原有的vim配置习惯保持不变.
 
-" ************ idea常用配置 ************
-
 " ========== 1:窗口相关 ==========
 " 打开当前文件所在的目录
-nnoremap <leader>x :action ActivateProjectToolWindow<CR>
+nnoremap <leader>x :action SelectInProjectView<CR>
 " 打开todo所在的目录
 nnoremap <leader>td :action ActivateTODOToolWindow<CR>
 " 关闭(close)其他的窗口 只剩下vim编辑区域
@@ -35,38 +38,56 @@ nnoremap <leader>c :action HideAllWindows<CR>
 " ========== 1:窗口相关 ==========
 
 " ========== 2:查找相关 ==========
-" 搜索任意文件,文件名
-nnoremap <leader>f :action GotoFile<CR>
 " 查找最近打开的文件
 nnoremap <leader>e :action RecentFiles<CR>
-" 查找方法定义, 这个也用了`]`, 和vim保持一致
+" 跳转到方法定义, 这个也用了`]`, 和vim保持一致
 nnoremap <leader>] :action GotoDeclaration<CR>
+" 跳转到实现
+" 查看实现了该接口的所有类,光标放于类或者方法定义处(implments)
+nnoremap <leader>i :action GotoImplementation<CR>
 " 输入名称查找class
-nnoremap <leader>k :action GotoClass<CR>
+nnoremap <leader>gc :action GotoClass<CR>
+" find use
+noremap <leader>u :action FindUsages<CR>
+" show use,使用该类的列表
+noremap <leader>s :action ShowUsages<CR>
 " ========== 2:查找相关 ==========
 
 " ========== 3:创建相关 ==========
-" 生成新的方法 构造器/getset/toString等
+" 生成新的方法 构造器/getset/toString等(generate)
 nnoremap <leader>g :action Generate<CR>
-" 创建新的元素
+" 创建新的元素,就是新建各种文件（new）
 nnoremap <leader>n :action NewElement<CR>
 " ========== 3:创建相关 ==========
 
-" 获取当前方法的返回类型,就是看某一句的返回类型
-nnoremap <leader>d :action ExpressionTypeInfo<CR>
-" 查看当前文件的所有方法, class等结构信息
-nnoremap <silent> <leader>b :action ActivateStructureToolWindow<CR>
-" 查看实现了该接口的所有类,方法跳转到方法,定义跳转到定义
-nnoremap <leader>i :action GotoImplementation<CR>
-
-" ============ 跳转相关 ============
+" ========== 4:跳转相关 ==========
 " 跳转到前一个地方, vim的 <C-O>
 nnoremap - :action Back<CR>
 " 跳转到后一个地方, vim的 <C-I>
 nnoremap = :action Forward<CR>
-" ============ 跳转相关 ============
+" ========== 4:跳转相关 ==========
 
-" ************ idea常用配置 ************
+" ========== 5:maven相关 ==========
+" maven命令全部以m开头
+" import
+noremap <leader>mr :action Maven.Reimport<CR>
+" ========== 5:maven相关 ==========
+
+" ========== 6：类定义 结构 =====
+" 获取当前方法的返回类型,就是看某一句的返回类型(define)
+nnoremap <leader>d :action ExpressionTypeInfo<CR>
+" 查看当前文件的所有方法, class等结构信息 (browser)
+nnoremap <leader>b :action ActivateStructureToolWindow<CR>
+" 重命名，不止重命名还可以改变路径
+nnoremap <leader>m :action RenameFile<CR>
+" ========== 6：类定义 结构 =====
+
+" ============ 7:拷贝路径 ============
+" 拷贝绝对路径
+nnoremap <leader>p :action CopyPaths<CR>
+" 拷贝包路径
+nnoremap <leader>r :action CopyReference<CR>
+" ============ 7:拷贝路径 ============
 
 " ============ 查找相关 ============
 " 查找类对应的test
@@ -76,15 +97,11 @@ nnoremap = :action Forward<CR>
 
 
 " ============ 编译, 运行相关 ============
-nnoremap <leader>r :action Rerun<CR>
+" nnoremap <leader>r :action Rerun<CR>
 " nnoremap <leader>r :action RunClass<CR>
 "nnoremap <leader>s :action Run<CR>
 " ============ 编译, 运行, debug相关 ============
 
-" ============ 拷贝路径 ============
-nnoremap <leader>' :action CopyPaths<CR>
-nnoremap <leader>; :action CopyReference<CR>
-" ============ 拷贝路径 ============
 
 " 移动并修改当前文件
 " nnoremap <leader>m :action RenameFile<CR>
