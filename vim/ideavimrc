@@ -1,12 +1,9 @@
 set hlsearch
 set visualbell
+set clipboard+=unnamed
+set ignorecase smartcase
 
 let mapleader = " "
-
-" 共享系统粘贴板
-set clipboard+=unnamed
-" 搜索时智能匹配大小写
-set ignorecase smartcase
 
 nnoremap <silent> <leader>w :w<CR>
 nnoremap <silent> <leader>q :q<CR>
@@ -35,6 +32,8 @@ nnoremap <leader>x :action SelectInProjectView<CR>
 nnoremap <leader>td :action ActivateTODOToolWindow<CR>
 " 关闭(close)其他的窗口 只剩下vim编辑区域
 nnoremap <leader>c :action HideAllWindows<CR>
+" 打开projects侧边栏
+nnoremap <leader>t :action ActivateProjectToolWindow<CR>
 " ========== 1:窗口相关 ==========
 
 " ========== 2:查找相关 ==========
