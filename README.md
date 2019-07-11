@@ -23,6 +23,8 @@ vim
         cp ~/Downloads/dotfiles/vim/vimrc ~/.vimrc
         vim +PluginInstall +qall
 
+        可能会遇到![vim](problems/vimplugin.png),不用任何操作，等待就好。
+
 ### ideavimrc
 如果您使用IDE: [idea](https://www.jetbrains.com/idea/), 并在其中使用ideavim插件, 建议您配置ideavimrc
 
