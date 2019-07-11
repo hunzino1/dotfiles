@@ -33,7 +33,7 @@ nnoremap <leader>td :action ActivateTODOToolWindow<CR>
 " 关闭(close)其他的窗口 只剩下vim编辑区域
 nnoremap <leader>c :action HideAllWindows<CR>
 " 打开projects侧边栏
-nnoremap <leader>t :action ActivateProjectToolWindow<CR>
+" nnoremap <leader>t :action ActivateProjectToolWindow<CR>
 " ========== 1:窗口相关 ==========
 
 " ========== 2:查找相关 ==========
