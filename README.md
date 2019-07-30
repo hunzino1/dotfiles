@@ -26,6 +26,7 @@ vim
 可能会遇到[vimplugin_problem](problems/vimplugin.png),不用任何操作，等待就好。
 
 ### ideavimrc
+(目前是我自己的配置，擎铧的配置见copy文件)
 如果您使用IDE: [idea](https://www.jetbrains.com/idea/), 并在其中使用ideavim插件, 建议您配置ideavimrc
 
     git clone https://github.com/dengqinghua/dotfiles.git ~/Downloads/dotfiles
