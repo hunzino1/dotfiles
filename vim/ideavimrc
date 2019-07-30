@@ -50,6 +50,8 @@ nnoremap <leader>gc :action GotoClass<CR>
 noremap <leader>u :action FindUsages<CR>
 " show use,使用该类的列表
 noremap <leader>s :action ShowUsages<CR>
+" find in path
+noremap <leader>fp :action FindInPath<CR>
 " ========== 2:查找相关 ==========
 
 " ========== 3:创建相关 ==========
